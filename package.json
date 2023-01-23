@@ -1,0 +1,31 @@
+{
+  "name": "trillo",
+  "version": "1.0.0",
+  "description": "Landing page for trillo",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "sass sass/main.scss css/style.css -w",
+
+    "compile:sass": "sass sass/main.scss css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'las 5 versions'  css/style.comp.css -o css/style.prefix.css",
+    "compress:css": "sass --style=compressed --watch css/style.prefix.css css/style.css ",
+    "build:css":"npm-run-all compile:sass prefix:css compress:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LenkaVer/Trillo-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LenkaVer/Trillo-project/issues"
+  },
+  "homepage": "https://github.com/LenkaVer/Trillo-project#readme",
+  "dependencies": {
+    "sass": "^1.56.1" },
+    "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "concat": "^1.0.3",
+    "postcss-cli": "^10.1.0"
+    }
+}
