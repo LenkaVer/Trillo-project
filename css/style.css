@@ -219,6 +219,7 @@ body {
   align-self: stretch;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .user-nav > * {
   padding: 0 2rem;
@@ -226,9 +227,10 @@ body {
   height: 100%;
   display: flex;
   align-items: center;
+  transition: background-color 0.2s;
 }
 .user-nav > *:hover {
-  background: var(--color-grey-light-2);
+  background-color: var(--color-grey-light-2);
 }
 .user-nav__icon-box {
   position: relative;
@@ -252,10 +254,199 @@ body {
   justify-content: center;
   align-items: center;
 }
+.user-nav__user:hover .user-nav-profile {
+  visibility: visible;
+  opacity: 1;
+}
 .user-nav__user-photo {
   height: 3.75rem;
   border-radius: 50%;
   margin-right: 1rem;
+}
+.user-nav__news:hover .user-nav-news {
+  visibility: visible;
+  opacity: 1;
+}
+.user-nav__chat:hover .user-nav-messages {
+  visibility: visible;
+  opacity: 1;
+}
+
+.user-nav-news {
+  position: absolute;
+  width: 32rem;
+  max-height: 32rem;
+  padding-top: 1rem;
+  background-color: #fff;
+  top: 100%;
+  right: 50%;
+  transform: translateX(50%);
+  box-shadow: var(--shadow-dark);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100;
+  transition: opacity 0.2s;
+  overflow-y: scroll;
+}
+.user-nav-news__title {
+  text-align: center;
+}
+.user-nav-news__list {
+  list-style: none;
+}
+.user-nav-news__item:not(:last-child) {
+  border-bottom: var(--line);
+}
+.user-nav-news__item.--unread {
+  position: relative;
+}
+.user-nav-news__item.--unread::before {
+  content: "";
+  height: 80%;
+  width: 3px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  background-color: var(--color-primary-light);
+  transform: translateY(-50%);
+}
+.user-nav-news__link:link, .user-nav-news__link:visited {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--color-grey-dark-2);
+  transition: background-color 0.2s;
+}
+.user-nav-news__link:link:hover, .user-nav-news__link:visited:hover {
+  background-color: var(--color-grey-light-2);
+}
+.user-nav-news__content {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  max-width: 20rem;
+}
+.user-nav-news__heading {
+  margin-bottom: 1rem;
+}
+.user-nav-news__text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.user-nav-news__timestamp {
+  font-size: 1rem;
+  margin-left: auto;
+  text-align: end;
+}
+
+.user-nav-messages {
+  position: absolute;
+  width: 32rem;
+  max-height: 32rem;
+  padding-top: 1rem;
+  background-color: #fff;
+  top: 100%;
+  right: 50%;
+  transform: translateX(50%);
+  box-shadow: var(--shadow-dark);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100;
+  transition: opacity 0.2s;
+  overflow-y: scroll;
+}
+.user-nav-messages__title {
+  text-align: center;
+}
+.user-nav-messages__list {
+  list-style: none;
+}
+.user-nav-messages__item:not(:last-child) {
+  border-bottom: var(--line);
+}
+.user-nav-messages__item.--unread {
+  position: relative;
+}
+.user-nav-messages__item.--unread::before {
+  content: "";
+  height: 80%;
+  width: 3px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  background-color: var(--color-primary-light);
+  transform: translateY(-50%);
+}
+.user-nav-messages__link:link, .user-nav-messages__link:visited {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--color-grey-dark-2);
+  transition: background-color 0.2s;
+}
+.user-nav-messages__link:link:hover, .user-nav-messages__link:visited:hover {
+  background-color: var(--color-grey-light-2);
+}
+.user-nav-messages__img {
+  height: 3.75rem;
+  border-radius: 50%;
+}
+.user-nav-messages__content {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  max-width: 15rem;
+}
+.user-nav-messages__heading {
+  margin-bottom: 1rem;
+}
+.user-nav-messages__text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.user-nav-messages__timestamp {
+  font-size: 1rem;
+  margin-left: auto;
+  text-align: end;
+}
+
+.user-nav-profile {
+  list-style: none;
+  position: absolute;
+  background-color: #fff;
+  top: 100%;
+  right: 0;
+  box-shadow: var(--shadow-dark);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100;
+  transition: opacity 0.2s;
+}
+.user-nav-profile__item:not(:last-child) {
+  border-bottom: var(--line);
+}
+.user-nav-profile__link:link, .user-nav-profile__link:visited {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--color-grey-dark-2);
+  transition: background-color 0.2s;
+}
+.user-nav-profile__link:link:hover, .user-nav-profile__link:visited:hover {
+  background-color: var(--color-grey-light-2);
+}
+.user-nav-profile__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: currentColor;
 }
 
 .side-nav {
@@ -307,7 +498,6 @@ body {
   color: var(--color-grey-light-1);
   text-decoration: none;
   text-transform: uppercase;
-  display: block;
   padding: 1.5rem 3rem;
   position: relative;
   z-index: 10;
