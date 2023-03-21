@@ -162,18 +162,22 @@ body {
   margin-left: 2rem;
 }
 
-.search {
+.search-wrapper {
+  position: relative;
   flex: 0 0 40%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 @media only screen and (max-width: 31.25em) {
-  .search {
+  .search-wrapper {
     order: 1;
     flex: 0 0 100%;
     background-color: var(--color-grey-light-2);
   }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .search__input {
   font-family: inherit;
@@ -199,6 +203,10 @@ body {
 .search__input:focus + .search__button {
   background-color: var(--color-grey-light-3);
 }
+.search:has(input:focus) + .suggestion {
+  opacity: 1;
+  visibility: visible;
+}
 .search__button {
   border: none;
   background-color: var(--color-grey-light-2);
@@ -213,6 +221,83 @@ body {
   height: 2rem;
   width: 2rem;
   fill: var(--color-grey-dark-3);
+}
+
+.suggestion {
+  position: absolute;
+  width: 90%;
+  max-height: 40rem;
+  background-color: #fff;
+  right: 49%;
+  transform: translate(50%, 0.5rem);
+  box-shadow: var(--shadow-dark);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100;
+  transition: opacity 0.2s;
+  overflow-y: scroll;
+}
+@media only screen and (max-width: 56.25em) {
+  .suggestion {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 501px) and (max-width: 699px) {
+  .suggestion {
+    width: 150%;
+  }
+}
+.suggestion__link:link, .suggestion__link:visited {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--color-grey-dark-2);
+  transition: background-color 0.2s;
+}
+.suggestion__link:link:hover, .suggestion__link:visited:hover {
+  background-color: var(--color-grey-light-2);
+}
+.suggestion__img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.suggestion__review {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+  max-width: 14rem;
+  width: 100%;
+}
+@media only screen and (max-width: 56.25em) {
+  .suggestion__review {
+    flex-direction: column;
+    align-items: flex-end;
+    max-width: 10rem;
+  }
+}
+.suggestion__stars {
+  line-height: 0;
+  margin: 0;
+}
+.suggestion__icon-star {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--color-primary);
+}
+.suggestion__rating-average {
+  color: var(--color-primary);
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .suggestion__rating-average {
+    font-size: 2rem;
+  }
 }
 
 .user-nav {
